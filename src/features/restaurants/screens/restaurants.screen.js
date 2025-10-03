@@ -11,13 +11,13 @@ const SafeArea = styled(SafeAreaView)`
   margin-top: ${isAndroid ? `${StatusBar.currentHeight}px` : "0px"};
 `;
 const SearchContainer = styled.View`
-  padding: 16px;
-`;
+  padding: ${props => props.theme.space[3]};
+  border-radius:20px;
+  `;
 
 const RestaurantListContainer = styled.View`
   flex: 1;
-  padding: 16px;
-  background-color: blue;
+  padding: ${props => props.theme.space[3]};
 `;
 
 export const RestaurantsScreen = () => {
@@ -28,13 +28,13 @@ export const RestaurantsScreen = () => {
       <SafeArea>
         <SearchContainer>
           <Searchbar
-            placeholder="Search"
+            mode="view"
             onChangeText={setSearchQuery}
             value={searchQuery}
           />
         </SearchContainer>
         <RestaurantListContainer>
-          <RestaurantInfoCard />
+          <RestaurantInfoCard/>
         </RestaurantListContainer>
       </SafeArea>
       <ExpoStatusBar style="auto" />
