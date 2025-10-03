@@ -1,12 +1,7 @@
 import * as React from "react";
 import styled from "styled-components/native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import {
-  StatusBar,
-  View,
-  SafeAreaView,
-  Platform,
-} from "react-native";
+import { StatusBar, SafeAreaView, Platform } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card";
 const isAndroid = Platform.OS === "android";
@@ -46,4 +41,3 @@ export const RestaurantsScreen = () => {
     </>
   );
 };
-
