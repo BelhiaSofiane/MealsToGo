@@ -8,7 +8,7 @@ import {
   Platform,
 } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { RestaurantInfo } from "../components/restaurant-info";
+import { RestaurantInfoCard } from "../components/restaurant-info-card";
 
 const isAndroind = Platform.OS === "android";
 export const RestaurantsScreen = () => {
@@ -19,20 +19,19 @@ export const RestaurantsScreen = () => {
       <SafeAreaView style={styles.container}>
         <View style={styles.search}>
           <Searchbar
-            mode='view'
             placeholder="Search"
             onChangeText={setSearchQuery}
             value={searchQuery}
           />
         </View>
         <View style={styles.list}>
-          <RestaurantInfo />
+          <RestaurantInfoCard />
         </View>
       </SafeAreaView>
       <ExpoStatusBar style="auto" />
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -45,5 +44,6 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     padding: 16,
+    backgroundColor: 'blue',
   },
 });
