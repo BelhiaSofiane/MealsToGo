@@ -24,6 +24,7 @@ const getVariant = (position, size, theme) => {
   return `${property}:${value}`;
 };
 
+// fixes android error
 const SpacerView = styled.View`
   ${({ variant }) => variant};
 `;
