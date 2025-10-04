@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -14,12 +15,12 @@ const RestaurantCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
 `;
 const Address = styled(Text)`
-  fonts-family: ${(props) => props.theme.fonts.body};
+  font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
 const Title = styled(Text)`
-  fonts-family: ${(props) => props.theme.fonts.heading};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-size: ${(props) => props.theme.fontSizes.body};
   color: ${(props) => props.theme.colors.ui.primary};
 `;
@@ -71,8 +72,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Title>{name}</Title>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((index) => (
+              <SvgXml key={index} xml={star} width={20} height={20} />
             ))}
           </Rating>
           <SectionEnd>
@@ -81,13 +82,14 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                 CLOSED TEMPORARILY
               </Text>
             )}
-            <View style={{ paddingLeft: 16 }}/>
+            <Spacer position="left" size="large" />
             {isOpenNow && <Open xml={open} width={20} height={20} />}
-            <View style={{ paddingLeft: 16 }}/>
+            <Spacer position="left" size="large">
               <Image
                 style={{ paddingLeft: 16, width: 15, height: 15 }}
                 source={{ uri: icon }}
               />
+            </Spacer>
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
