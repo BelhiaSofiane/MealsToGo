@@ -17,6 +17,8 @@ import { theme } from "./src/infrastructure/theme";
 import { Text } from "./src/components/typography/text.component";
 import { View } from "react-native";
 
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+
 const Tab = createBottomTabNavigator();
 
 function MapScreen() {
@@ -47,45 +49,45 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <SafeArea>
-          <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={{
-                // Style for active tab
-                tabBarActiveTintColor: "tomato",
-                // Style for inactive tab
-                tabBarInactiveTintColor: "gray",
-              }}
-            >
-              <Tab.Screen
-                name="Restaurants"
-                component={RestaurantsScreen}
-                options={{
-                  // Icon changes based on focused/unfocused state
-                  tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="restaurant" size={size} color={color} />
-                  ),
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator
+                screenOptions={{
+                  tabBarActiveTintColor: "tomato",
+                  tabBarInactiveTintColor: "gray",
                 }}
-              />
-              <Tab.Screen
-                name="Map"
-                component={MapScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="map" size={size} color={color} />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Settings"
-                component={SettingsScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="settings" size={size} color={color} />
-                  ),
-                }}
-              />
-            </Tab.Navigator>
-          </NavigationContainer>
+              >
+                <Tab.Screen
+                  name="Restaurants"
+                  component={RestaurantsScreen}
+                  options={{
+                    // Icon changes based on focused/unfocused state
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name="restaurant" size={size} color={color} />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Map"
+                  component={MapScreen}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name="map" size={size} color={color} />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Settings"
+                  component={SettingsScreen}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name="settings" size={size} color={color} />
+                    ),
+                  }}
+                />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantsContextProvider>
         </SafeArea>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
