@@ -1,8 +1,6 @@
 import * as React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { SafeArea } from "./src/components/utility/safe-area.component";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ThemeProvider } from "styled-components/native";
 import {
   useFonts as useOswald,
@@ -10,33 +8,16 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 // Import Ionicons - already included with Expo!
-import { Ionicons } from "@expo/vector-icons";
 
-import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { theme } from "./src/infrastructure/theme";
-import { Text } from "./src/components/typography/text.component";
-import { View } from "react-native";
+
 
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { NavigationComponent } from "./src/infrastructure/navigation/app.navigator";
 
-const Tab = createBottomTabNavigator();
 
-function MapScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Map!</Text>
-    </View>
-  );
-}
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
 export default function App() {
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -52,43 +33,7 @@ export default function App() {
         <SafeArea>
           <LocationContextProvider>
             <RestaurantsContextProvider>
-              <NavigationContainer>
-                <Tab.Navigator
-                  screenOptions={{
-                    tabBarActiveTintColor: "tomato",
-                    tabBarInactiveTintColor: "gray",
-                  }}
-                >
-                  <Tab.Screen
-                    name="Restaurants"
-                    component={RestaurantsScreen}
-                    options={{
-                      // Icon changes based on focused/unfocused state
-                      tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="restaurant" size={size} color={color} />
-                      ),
-                    }}
-                  />
-                  <Tab.Screen
-                    name="Map"
-                    component={MapScreen}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="map" size={size} color={color} />
-                      ),
-                    }}
-                  />
-                  <Tab.Screen
-                    name="Settings"
-                    component={SettingsScreen}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="settings" size={size} color={color} />
-                      ),
-                    }}
-                  />
-                </Tab.Navigator>
-              </NavigationContainer>
+              <NavigationComponent />
             </RestaurantsContextProvider>
           </LocationContextProvider>
         </SafeArea>

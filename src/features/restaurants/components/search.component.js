@@ -7,13 +7,23 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const StyledSearchBar = styled(Searchbar).attrs({
+  elevation: 5,
+  placeholder: "Search for a location",
+  placeholderTextColor: "gray",
+})`
+  padding: ${(props) => props.theme.space[0]};
+  border-radius: ${(props) => props.theme.space[2]};
+  background-color: ${(props) => props.theme.colors.bg.secondary};
+`;
+
 export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyWord, setSearchKeyword] = useState(keyword);
 
   useEffect(() => {
     setSearchKeyword(keyword);
-  }, [keyword]);
+  }, []);
 
   useEffect(() => {
     search(searchKeyWord);
@@ -21,7 +31,7 @@ export const Search = () => {
 
   return (
     <SearchContainer>
-      <Searchbar
+      <StyledSearchBar
         placeholder="Search for a location"
         value={searchKeyWord}
         onSubmitEditing={() => {

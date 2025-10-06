@@ -1,0 +1,69 @@
+import React from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
+import { Ionicons } from "@expo/vector-icons";
+import { View, Text } from "react-native";
+
+const Tab = createBottomTabNavigator();
+
+function MapScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Map!</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+export const NavigationComponent = () => {
+  return (
+    <>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarActiveTintColor: "tomato",
+            tabBarInactiveTintColor: "gray",
+            headerShown: false,
+          }}
+        >
+          <Tab.Screen
+            name="Restaurants"
+            component={RestaurantsScreen}
+            options={{
+              // Icon changes based on focused/unfocused state
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="restaurant" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Map"
+            component={MapScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="map" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="settings" size={size} color={color} />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
+  );
+};

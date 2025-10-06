@@ -1,3 +1,4 @@
+import { Rating } from "../../features/restaurants/components/restaurant-info-card.styles";
 import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
 
@@ -19,8 +20,10 @@ export const restaurantsTransform = ({results = []}) => {
         })
         return {
             ...restaurant,
+            address: restaurant.vicinity,
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
-            isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY"
+            isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+            placeId : restaurant.place_id,
         };
     })
     return camelize(mappedResults);
