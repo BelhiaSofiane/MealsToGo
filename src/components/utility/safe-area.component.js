@@ -1,4 +1,5 @@
-import { Platform, SafeAreaView, StatusBar } from "react-native";
+import { Platform, StatusBar } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context"
 import styled from "styled-components/native";
 
 const isAndroid = Platform.OS === 'android'

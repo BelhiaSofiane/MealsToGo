@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
-
+import MapView from "react-native-maps";
 const Tab = createBottomTabNavigator();
 
 function MapScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Map!</Text>
+    <View style={{ flex: 1}}>
+      <MapView style={{ width: "100%", height: "100%"}} />
     </View>
   );
 }
