@@ -14,7 +14,7 @@ import { theme } from "./src/infrastructure/theme";
 
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
-import { NavigationComponent } from "./src/infrastructure/navigation/app.navigator";
+import { Navigation } from "./src/infrastructure/navigation";
 
 
 
@@ -33,7 +33,7 @@ export default function App() {
         <SafeArea>
           <LocationContextProvider>
             <RestaurantsContextProvider>
-              <NavigationComponent />
+              <Navigation />
             </RestaurantsContextProvider>
           </LocationContextProvider>
         </SafeArea>

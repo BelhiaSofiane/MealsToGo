@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
+import { RestaurantsNavigator } from "./restaurants.navigator";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
 
@@ -23,7 +23,7 @@ function SettingsScreen() {
   );
 }
 
-export const NavigationComponent = () => {
+export const AppNavigator = () => {
   return (
     <>
       <NavigationContainer>
@@ -36,7 +36,7 @@ export const NavigationComponent = () => {
         >
           <Tab.Screen
             name="Restaurants"
-            component={RestaurantsScreen}
+            component={RestaurantsNavigator}
             options={{
               // Icon changes based on focused/unfocused state
               tabBarIcon: ({ color, size }) => (
