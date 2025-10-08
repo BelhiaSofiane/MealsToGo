@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { Ionicons } from "@expo/vector-icons";
@@ -21,7 +20,6 @@ function SettingsScreen() {
 export const AppNavigator = () => {
   return (
     <>
-      <NavigationContainer>
         <Tab.Navigator
           screenOptions={{
             tabBarActiveTintColor: "tomato",
@@ -58,7 +56,6 @@ export const AppNavigator = () => {
             }}
           />
         </Tab.Navigator>
-      </NavigationContainer>
     </>
   );
 };
