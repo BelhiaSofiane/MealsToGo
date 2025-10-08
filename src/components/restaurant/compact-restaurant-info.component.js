@@ -1,32 +1,39 @@
 import React from "react";
+import styled from "styled-components/native";
+import WebView from "react-native-webview";
+import { Platform } from "react-native";
 
 import { Text } from "../typography/text.component";
-import styled from "styled-components";
 
-
-const ComapctImage = styled.Image`
-broder-radius: 10px;
-width: 120px;
-height: 100px;
+const CompactImage = styled.Image`
+  border-radius: 10px;
+  width: 120px;
+  height: 100px;
 `;
+
+const CompactWebview = styled(WebView)`
+  border-radius: 10px;
+  width: 120px;
+  height: 100px;
+`;
+
 const Item = styled.View`
-padding: 10px;
-max-width:120px;
-align-items: center;
+  padding: 10px;
+  max-width: 120px;
+  align-items: center;
 `;
 
-// eslint-disable-next-line react/prop-types
+const isAndroid = Platform.OS === "android";
+
 export const CompactRestaurantInfo = ({ restaurant }) => {
-    console.log('compact',restaurant);
-    return (
+  const Image = isAndroid ? CompactWebview : CompactImage;
+
+  return (
     <Item>
-        <ComapctImage source={{ uri: restaurant.photos[0]}} />
-        <Text 
-        variant='caption'
-        numberOfLines={3}
-        >
-            {restaurant.name}
-        </Text>
+      <Image source={{ uri: restaurant.photos[0] }} />
+      <Text center variant="caption" numberOfLines={3}>
+        {restaurant.name}
+      </Text>
     </Item>
-    )
+  );
 };

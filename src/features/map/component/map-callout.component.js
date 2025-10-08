@@ -4,8 +4,5 @@ import { CompactRestaurantInfo } from "../../../components/restaurant/compact-re
 
 // eslint-disable-next-line react/prop-types
 export const MapCallout = ({ restaurant }) => {
-    console.log('map callout    ',restaurant);
-  return (
-    <CompactRestaurantInfo restaurant={restaurant} isMap />
-  );
+  return <CompactRestaurantInfo restaurant={restaurant} isMap />;
 };

@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
-import MapView from "react-native-maps";
 import { MapScreen } from "../../features/map/screens/map.screen";
+import { MapNavigator } from "./map.navigator";
 const Tab = createBottomTabNavigator();
 
 
@@ -41,7 +41,7 @@ export const AppNavigator = () => {
           />
           <Tab.Screen
             name="Map"
-            component={MapScreen}
+            component={MapNavigator}
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="map" size={size} color={color} />
