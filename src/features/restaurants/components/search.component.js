@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useState, useEffect } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
@@ -17,7 +18,7 @@ const StyledSearchBar = styled(Searchbar).attrs({
   background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
-export const Search = () => {
+export const Search = ({ isFavroutiesToggled, onFavouritesToggle }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyWord, setSearchKeyword] = useState(keyword);
 
@@ -32,6 +33,8 @@ export const Search = () => {
   return (
     <SearchContainer>
       <StyledSearchBar
+        icon={isFavroutiesToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavouritesToggle} 
         placeholder="Search for a location"
         value={searchKeyWord}
         onSubmitEditing={() => {

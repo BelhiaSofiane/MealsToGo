@@ -8,7 +8,7 @@ import { Marker } from "react-native-maps";
 import { Search } from "../component/search.component";
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { MapCallout } from "../component/map-callout.component";
+// import { MapCallout } from "../component/map-callout.component";
 
 const Map = styled(MapView)`
   height: 100%;
@@ -61,7 +61,8 @@ export const MapScreen = ({ navigation }) => {
                     restaurant: restaurant,
                   })
                 }
-              ></Callout>
+              >
+              </Callout>
             </Marker>
           );
         })}

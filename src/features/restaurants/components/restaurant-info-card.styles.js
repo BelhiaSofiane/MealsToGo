@@ -3,7 +3,6 @@ import { Card } from "react-native-paper";
 import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
 
-import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 
 
