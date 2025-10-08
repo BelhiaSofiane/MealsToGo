@@ -5,15 +5,10 @@ import { RestaurantsNavigator } from "./restaurants.navigator";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
 import MapView from "react-native-maps";
+import { MapScreen } from "../../features/map/screens/map.screen";
 const Tab = createBottomTabNavigator();
 
-function MapScreen() {
-  return (
-    <View style={{ flex: 1}}>
-      <MapView style={{ width: "100%", height: "100%"}} />
-    </View>
-  );
-}
+
 
 function SettingsScreen() {
   return (
