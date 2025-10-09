@@ -3,7 +3,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapNavigator } from "./map.navigator";
-
+import { SettingsNavigator } from "./settings.navigator";
 import { Ionicons } from "@expo/vector-icons";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { LocationContextProvider } from "../../services/location/location.context";
@@ -46,7 +46,7 @@ export const AppNavigator = () => {
               />
               <Tab.Screen
                 name="Settings"
-                component={SettingsScreen}
+                component={SettingsNavigator}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Ionicons name="settings" size={size} color={color} />

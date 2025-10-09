@@ -14,6 +14,8 @@ import {
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { FadeIn } from "react-native-reanimated";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -25,6 +27,7 @@ export const RegisterScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <FadeInView style={{ justifyContent: "center", alignItems: "center" }}>
       <Title>Meals To Go</Title>
       <AccountContainer>
         <AuthInput
@@ -74,11 +77,13 @@ export const RegisterScreen = ({ navigation }) => {
           )}
         </Spacer>
       </AccountContainer>
+      
       <Spacer position="top" size="large">
         <AuthButton mode="contained" onPress={() => navigation.goBack()}>
           Back
         </AuthButton>
       </Spacer>
+      </FadeInView>
     </AccountBackground>
   );
 };

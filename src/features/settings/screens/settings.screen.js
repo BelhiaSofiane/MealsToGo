@@ -5,33 +5,22 @@ import { List, Avatar } from "react-native-paper";
 
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { SafeArea } from "../../../components/utility/safe-area.component";
 import { colors } from "../../../infrastructure/theme/colors";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
-const TransparentSafeArea = styled(SafeArea)`
-  background-color: transparent;
-`;
-const SettingsBackground = styled.ImageBackground.attrs({
-  source: require("../../../../assets/home_bg.jpg"),
-})`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-`;
+import {
+  TransparentSafeArea,
+  SettingsBackground,
+  AvatarContainer,
+  SettingsItem,
+} from "../components/settings.screen.styles";
 
-const SettingsItem = styled(List.Item)`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: rgba(255, 255, 255, 0.6);
-`;
-const AvatarContainer = styled.View`
-  align-items: center;
-`;
+
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   return (
-    <SettingsBackground>
+    <>
       <TransparentSafeArea>
         <AvatarContainer>
           <Avatar.Icon
@@ -45,7 +34,7 @@ export const SettingsScreen = ({ navigation }) => {
         </AvatarContainer>
 
         <List.Section>
-          <SettingsItem
+           <SettingsItem
             title="Favourites"
             description="View your favourites"
             left={(props) => (
@@ -53,7 +42,6 @@ export const SettingsScreen = ({ navigation }) => {
             )}
             onPress={() => navigation.navigate("Favourites")}
           />
-          <Spacer />
           <SettingsItem
             title="Logout"
             left={(props) => (
@@ -63,6 +51,6 @@ export const SettingsScreen = ({ navigation }) => {
           />
         </List.Section>
       </TransparentSafeArea>
-    </SettingsBackground>
+    </>
   );
 };

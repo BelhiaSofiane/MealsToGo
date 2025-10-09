@@ -8,30 +8,34 @@ import {
   AuthButton,
   Title,
 } from "../components/account.styles";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
-      <Title>Meals To Go</Title>
-      <AccountContainer>
-        <AuthButton
-          icon="lock-open-outline"
-          mode="contained"
-          onPress={() => navigation.navigate("Login")}
-        >
-            Login
-        </AuthButton>
-        <Spacer position="top" size="large">
+      <FadeInView style={{ justifyContent: "center", alignItems: "center" }} >
+        <Title>Meals To Go</Title>
+
+        <AccountContainer>
           <AuthButton
-            icon="email"
+            icon="lock-open-outline"
             mode="contained"
-            onPress={() => navigation.navigate("Register")}
+            onPress={() => navigation.navigate("Login")}
           >
-            Register
+            Login
           </AuthButton>
-        </Spacer>
-      </AccountContainer>
+          <Spacer position="top" size="large">
+            <AuthButton
+              icon="email"
+              mode="contained"
+              onPress={() => navigation.navigate("Register")}
+            >
+              Register
+            </AuthButton>
+          </Spacer>
+        </AccountContainer>
+      </FadeInView>
     </AccountBackground>
   );
 };

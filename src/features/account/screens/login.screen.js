@@ -13,6 +13,7 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { colors } from "../../../infrastructure/theme/colors";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -22,6 +23,7 @@ export const LoginScreen = ({ navigation }) => {
     <AccountBackground>
       <AccountCover />
       <Title>Meals To Go</Title>
+      <FadeInView duration={1000}>
       <AccountContainer>
         <AuthInput
           label="E-mail"
@@ -60,6 +62,7 @@ export const LoginScreen = ({ navigation }) => {
           )}
         </Spacer>
       </AccountContainer>
+      </FadeInView>
       <Spacer position="top" size="large">
         <AuthButton mode="contained" onPress={() => navigation.goBack()}>
           Back

@@ -13,6 +13,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { FavouritesBar } from "../../../components/favourites/favourite-bar.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -35,15 +36,17 @@ export const RestaurantsScreen = ({ navigation }) => {
   return (
     <>
       <SafeArea>
-        <Search 
-        isFavroutiesToggled={isToggled}
-        onFavouritesToggle={() => setIsToggled(!isToggled)}
-         />
+        <Search
+          isFavroutiesToggled={isToggled}
+          onFavouritesToggle={() => setIsToggled(!isToggled)}
+        />
 
-
-        {isToggled && <FavouritesBar 
-        onNavigate={(screen, params) => navigation.navigate(screen, params)} 
-        favourites={favourites} />}
+        {isToggled && (
+          <FavouritesBar
+            onNavigate={(screen, params) => navigation.navigate(screen, params)}
+            favourites={favourites}
+          />
+        )}
         {error && <Text variant="error">{error}</Text>}
         {loading && (
           <LoadingContainer>
@@ -54,11 +57,16 @@ export const RestaurantsScreen = ({ navigation }) => {
           data={restaurants}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity 
-               activeOpacity={0.85}
-               onPress={() => navigation.navigate("RestaurantDetail", { restaurant: item })}>
+              <TouchableOpacity
+                activeOpacity={0.85}
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", { restaurant: item })
+                }
+              >
                 <Spacer position={"bottom"} size={"large"}>
-                  <RestaurantInfoCard restaurant={item} />
+                  <FadeInView>
+                    <RestaurantInfoCard restaurant={item} />
+                  </FadeInView>
                 </Spacer>
               </TouchableOpacity>
             );
