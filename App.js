@@ -6,24 +6,25 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-
-// Import Ionicons - already included with Expo!
+import Constants from 'expo-constants';
 
 import { theme } from "./src/infrastructure/theme";
-
 import { Navigation } from "./src/infrastructure/navigation";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import { initializeApp } from "firebase/app";
 
-// Firebase configuration
+// Firebase configuration from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyAm437z7hLslj4o_70jUhZtIoUU0VDTGAk",
-  authDomain: "mealstogo-aaa24.firebaseapp.com",
-  projectId: "mealstogo-aaa24",
-  storageBucket: "mealstogo-aaa24.firebasestorage.app",
-  messagingSenderId: "72693264545",
-  appId: "1:72693264545:web:24c15ab7716e037dd680e0",
+  apiKey: Constants.expoConfig.extra.firebaseApiKey,
+  authDomain: Constants.expoConfig.extra.firebaseAuthDomain,
+  projectId: Constants.expoConfig.extra.firebaseProjectId,
+  storageBucket: Constants.expoConfig.extra.firebaseStorageBucket,
+  messagingSenderId: Constants.expoConfig.extra.firebaseMessagingSenderId,
+  appId: Constants.expoConfig.extra.firebaseAppId,
 };
+
+
+console.log('Firebase API Key loaded:', Constants.expoConfig.extra.firebaseApiKey ? 'Yes ✅' : 'No ❌');
 
 initializeApp(firebaseConfig);
 
